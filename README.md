@@ -1,7 +1,7 @@
 <img width="947" height="493" alt="Screenshot 2026-08-29 174309" src="https://github.com/user-attachments/assets/29cc6c26-c5ec-4093-9158-30b9e555b664" />
 # ELSA Albania
 
-Official website for the European Law Students' Association (ELSA) Albania — 
+Official website for the European Law Students' Association (ELSA) Albania, 
 the world's largest independent law students' association.
 
 **Live site:** [elsa-albania.org](https://elsa-albania.org/)
