@@ -8,7 +8,7 @@ import AnimatedSection from './AnimatedSection';
 import EmailLink from './EmailLink';
 import mpImage from '../../assets/mp.jpg';
 import mgImage from '../../assets/mg.jpg';
-import dinaImage from '../../assets/Dina1.png';
+import dinaImage from '../../assets/dina_shapo.jpg';
 import amaraImage from '../../assets/amara_alia.jpg';
 import emaDakoImage from '../../assets/ema_dako.jpg';
 import ersianaImage from '../../assets/ersiana_korriku.jpg';
@@ -116,9 +116,7 @@ const BoardPage = () => {
                           src={member.image}
                           alt={member.name}
                           className="w-full h-full object-cover"
-                          style={member.image === dinaImage
-                            ? { objectPosition: "70% 25%" }
-                            : { objectPosition: "center" }}
+                          style={{ objectPosition: "center 15%" }}
                         />
                       </motion.div>
                     )}
