@@ -6,7 +6,7 @@ import { Mail } from 'lucide-react'; // Add this import
 import PageTransition from './PageTransition';
 import AnimatedSection from './AnimatedSection';
 import EmailLink from './EmailLink';
-import mpImage from '../../assets/mp.jpg';
+import mpImage from '../../assets/marios_prendi.jpg';
 import mgImage from '../../assets/mg.jpg';
 import dinaImage from '../../assets/dina_shapo.jpg';
 import amaraImage from '../../assets/amara_alia.jpg';
