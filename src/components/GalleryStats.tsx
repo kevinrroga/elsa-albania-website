@@ -1,86 +1,203 @@
-import React from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
-import { EMAIL_USER, EMAIL_DOMAIN, EMAIL } from '../lib/organization';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../translations';
+import { useEffect } from 'react';
+import GalleryImage from './GalleryImage';
+import { motion } from 'framer-motion';
 
-const Footer = () => {
+// Import gallery images
+import imazh1 from '@assets/imazh1.jpeg';
+import imazh2 from '@assets/imazh2.jpeg';
+import imazh3 from '@assets/imazh3.jpeg';
+import imazh4 from '@assets/imazh4.jpeg';
+import imazh5 from '@assets/imazh5.jpeg';
+
+// Import partner logos
+import frostfireImg from '@assets/frostfire.jpeg';
+import crpartnersImg from '@assets/crpartners.png';
+import collegeofeuropeImg from '@assets/collegeofeurope.png';
+import lrgImg from '@assets/lrg.jpg';
+import fdutImg from '@assets/fdut.jpeg';
+import halimiImg from '@assets/halimi.jpeg';
+import europianiImg from '@assets/europiani.jpg';
+import epokaImg from '@assets/epoka university.jpg';
+import komitetihelsinikitImg from '@assets/komitetihelsinkit.jpeg';
+// import ndiImg from '@assets/ndi.jpeg';
+import ministriadrejtesiseImg from '@assets/ministriadrejtesise.jpg';
+import osceImg from '@assets/osce.jpeg';
+import vcsImg from '@assets/vcs.jpg';
+import rycoImg from '@assets/ryco.jpg';
+import bbaImg from '@assets/bba.jpeg';
+import qqImg from '@assets/qq.jpg';
+import lawfirmImg from '@assets/lawfirm.jpg';
+import conceilImg from '@assets/conceil_europe.jpg';
+
+const GalleryStats = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  const images = [
+    {
+      src: imazh1,
+      alt: t.legalConference,
+    },
+    {
+      src: imazh2,
+      alt: t.modernCourthouse,
+    },
+    {
+      src: imazh3,
+      alt: t.legalAssembly,
+    },
+    {
+      src: imazh4,
+      alt: t.academicGathering,
+    },
+    {
+      src: imazh5,
+      alt: t.legalAssembly,
+    },
+  ];
+
+  // Preload images
+  useEffect(() => {
+    images.forEach(({ src }) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  const partners = [
+    {
+      logo: frostfireImg,
+      name: 'Frost & Fire',
+    },
+    {
+      logo: crpartnersImg,
+      name: 'CR Partners',
+    },
+    {
+      logo: collegeofeuropeImg,
+      name: 'College of Europe - Tirana Campus',
+    },
+    {
+      logo: conceilImg,
+      name: 'Council of Europe',
+    },
+    {
+      logo: fdutImg,
+      name: 'Fakulteti i Drejtësisë',
+    },
+    {
+      logo: halimiImg,
+      name: 'Halimi Law & Tax',
+    },
+    {
+      logo: europianiImg,
+      name: 'Universiteti Europian i Tiranes',
+    },
+    {
+      logo: epokaImg,
+      name: 'Epoka University',
+
+    },
+    {
+      logo: komitetihelsinikitImg,
+      name: 'Komiteti Shqiptar i Helsinkit',
+
+    },
+    // {
+    //   logo: ndiImg,
+    //   name: 'NDI',
+
+    // },
+    {
+      logo: ministriadrejtesiseImg,
+      name: 'Ministria e Drejtësisë',
+
+    },
+    {
+      logo: osceImg,
+      name: 'OSCE',
+
+    },
+    {
+      logo: vcsImg,
+      name: 'CleanScore',
+
+    },
+    {
+      logo: rycoImg,
+      name: 'Regional Youth Cooperation Office',
+
+    },
+    {
+      logo: bbaImg,
+      name: 'Beyond Barriers Association',
+
+    },
+    {
+      logo: qqImg,
+      name: 'Qëndresa Qytetare',
+
+    },
+    {
+      logo: lawfirmImg,
+      name: 'K Law Firm',
+
+    },
+  ];
+
   return (
-    <footer className="bg-slate-900 text-white py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Logo Section */}
-          <div className="lg:col-span-1">
-            <div className="mb-6">
-              <div className="text-4xl font-bold italic mb-2">lsa</div>
-              <div className="text-sm text-gray-300">
-                The International Legal Students' Network
-              </div>
-              <div className="text-sm text-gray-300 font-semibold">
-                GERMANY
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Section */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-bold mb-6 uppercase tracking-wide">Contact</h3>
-            <div className="space-y-4">
-              <div className="font-semibold">LSA-Germany e.V.</div>
-              
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
-                <div>
-                  <div>Friedrichstraße 15</div>
-                  <div>10117 Berlin</div>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <div>+49 30 12345678</div>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <button
-                  onClick={() => { window.location.href = `mailto:${EMAIL_USER}@${EMAIL_DOMAIN}`; }}
-                  className="hover:text-orange-400 transition-colors"
-                >
-                  {EMAIL}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Quick Links Section */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-bold mb-6 uppercase tracking-wide">Quick Links</h3>
-            <div className="space-y-3">
-              <div><a href="#" className="text-gray-300 hover:text-white transition-colors">Board and Team</a></div>
-              <div><a href="#" className="text-gray-300 hover:text-white transition-colors">Regulations of LSA-Germany e.V.</a></div>
-              <div><a href="#" className="text-gray-300 hover:text-white transition-colors">Location Overview</a></div>
-              <div><a href="#" className="text-gray-300 hover:text-white transition-colors">Contact Form</a></div>
-              <div><a href="#" className="text-gray-300 hover:text-white transition-colors">Projects</a></div>
-            </div>
-          </div>
-
-          {/* Vision Section */}
-          <div className="lg:col-span-1">
-            <h3 className="text-lg font-bold mb-6 uppercase tracking-wide">Our Vision</h3>
-            <p className="text-gray-300 leading-relaxed">
-              A fair world in which there is respect for human dignity and cultural diversity.
-            </p>
-          </div>
+    <section className="bg-slate-900">
+      {/* Gallery Section */}
+      <div className="max-w-7xl mx-auto px-4 pt-16">
+        <div className="flex items-center justify-center gap-2 h-[400px] w-full max-w-5xl mx-auto mb-16 overflow-x-auto">
+          {images.map((image, index) => (
+            <GalleryImage key={index} src={image.src} alt={image.alt} />
+          ))}
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="border-t border-gray-700 mt-12 pt-8">
-          <div className="text-center text-gray-400 text-sm">
-            © LSA-Germany e.V. – Legal Notice – Privacy Policy
+        {/* Partners Section */}
+        <div className="pb-16">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: '100px' }}
+              className="h-1 bg-orange-500 mx-auto mb-8"
+              transition={{ duration: 0.8 }}
+            />
+            <h2 className="text-3xl font-bold text-white">{t.ourPartners}</h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {partners.map((partner, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group flex flex-col items-center"
+              >
+                <div className="w-40 h-40 bg-white rounded-xl shadow-lg flex items-center justify-center mb-4 transform transition-all duration-300 hover:shadow-orange-500/20 hover:-translate-y-1">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="w-36 h-36 object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+
+                <h3 className="text-orange-400 font-medium mb-1 text-center w-40 break-words">
+                  {partner.name}
+                </h3>
+                <p className="text-sm text-slate-300 text-center">
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
-    </footer>
+    </section>
   );
 };
 
-export default Footer;
+export default GalleryStats;

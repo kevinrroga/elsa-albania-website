@@ -1,0 +1,251 @@
+// Removed unused import of useEffect and useState
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../translations';
+import { motion } from 'framer-motion';
+import { Mail } from 'lucide-react'; // Add this import
+import PageTransition from './PageTransition';
+import AnimatedSection from './AnimatedSection';
+import EmailLink from './EmailLink';
+import mpImage from '../../assets/mp.jpg';
+import mgImage from '../../assets/mg.jpg';
+import dinaImage from '../../assets/Dina1.png';
+
+// Board members data
+const boardMembers = [
+  {
+    name: "Marios Prendi",
+    position: "President",
+    image: mpImage,
+    bio: "Leading ELSA Albania with passion and dedication.",
+    isMain: true,
+    emailUser: "president"
+  },
+  {
+    name: "Dina Shapo",
+    position: "Secretary General",
+    image: dinaImage,
+    bio: "Coordinating academic activities and international relations.",
+    isMain: true,
+    emailUser: "secgen"
+  },
+  {
+    name: "Amara Alia",
+    position: "Vice President in Charge of Marketing",
+    image: null,
+    bio: "",
+    isMain: false,
+    emailUser: "marketing"
+  },
+  {
+    name: "Martina Gllavaj",
+    position: "Vice President in Charge of Academic Activities",
+    image: mgImage,
+    bio: "",
+    isMain: false,
+    emailUser: "academicactivities"
+  },
+  {
+    name: "Ema Dako",
+    position: "Vice President in Charge of Competitions",
+    image: null,
+    bio: "",
+    isMain: false,
+    emailUser: "competitions"
+  },
+  {
+    name: "Ersiana Korriku",
+    position: "Vice President in Charge of Professional Development",
+    image: null,
+    bio: "",
+    isMain: false,
+    emailUser: "professionaldevelopment"
+  },
+  {
+    name: "Redi Vraniçi",
+    position: "Vice President in Charge of Seminars & Conferences",
+    image: null,
+    bio: "",
+    isMain: false,
+    emailUser: "seminarsconferences"
+  }
+];
+
+const BoardPage = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  // Animation variants
+
+  // Separate main positions from others
+  const mainMembers = boardMembers.filter(member => member.isMain);
+  const otherMembers = boardMembers.filter(member => !member.isMain);
+
+  // Split otherMembers into two groups
+  const regularVPs = otherMembers.slice(0, otherMembers.length - 2); // All VPs except last two
+  const lastTwoVPs = otherMembers.slice(-2); // Last two VPs
+
+  return (
+    <PageTransition>
+      <main className="min-h-screen">
+        <motion.div
+          className="bg-slate-800 py-20 text-white text-center relative overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="text-4xl font-bold mb-4">{t.boardTitle}</h1>
+          <p className="text-slate-300 text-lg mb-16">{t.boardDescription}</p>
+
+          {/* Main Position Cards */}
+          <div className="max-w-6xl mx-auto px-6 mb-16">
+            <div className="flex flex-wrap justify-center gap-16">
+              {mainMembers.map((member, index) => (
+                <AnimatedSection key={member.name} delay={index * 0.1}>
+                  <div className="text-center">
+                    {member.image && (
+                      <motion.div
+                        className="w-56 h-56 mx-auto mb-4 rounded-full overflow-hidden"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      >
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                          style={member.image === dinaImage
+                            ? { objectPosition: "70% 25%" }
+                            : { objectPosition: "center" }}
+                        />
+                      </motion.div>
+                    )}
+                    <h3 className="text-2xl font-semibold text-white mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-orange-400 font-medium mb-3">
+                      {member.position}
+                    </p>
+
+                    {/* Email Display and Button */}
+                    {member.emailUser && (
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-2">
+                        <EmailLink
+                          user={member.emailUser}
+                          showText
+                          textClassName="text-slate-300 text-sm break-all"
+                          className="inline-flex items-center justify-center bg-slate-700 hover:bg-slate-600
+                                   text-white p-2 rounded-full transition-colors flex-shrink-0 cursor-pointer"
+                          title={`Email ${member.name}`}
+                          ariaLabel={`Email ${member.name}`}
+                        >
+                          <Mail size={18} />
+                        </EmailLink>
+                      </div>
+                    )}
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+
+          {/* Regular VPs Grid */}
+          <div className="max-w-6xl mx-auto px-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {regularVPs.map((member, index) => (
+                <AnimatedSection key={member.name} delay={(index + 1) * 0.1}>
+                  <div className="text-center">
+                    {member.image && (
+                      <motion.div
+                        className="w-48 h-48 mx-auto mb-3 rounded-full overflow-hidden"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      >
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                    )}
+                    <h3 className="text-xl font-semibold text-white mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-orange-400 font-medium mb-3">
+                      {member.position}
+                    </p>
+
+                    {/* Email Display and Button */}
+                    {member.emailUser && (
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-2">
+                        <EmailLink
+                          user={member.emailUser}
+                          showText
+                          textClassName="text-slate-300 text-sm break-all"
+                          className="inline-flex items-center justify-center bg-slate-700 hover:bg-slate-600
+                                   text-white p-2 rounded-full transition-colors flex-shrink-0 cursor-pointer"
+                          title={`Email ${member.name}`}
+                          ariaLabel={`Email ${member.name}`}
+                        >
+                          <Mail size={18} />
+                        </EmailLink>
+                      </div>
+                    )}
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+
+          {/* Last Two VPs - Centered */}
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="flex flex-wrap justify-center gap-16">
+              {lastTwoVPs.map((member, index) => (
+                <AnimatedSection key={member.name} delay={(index + 1) * 0.1}>
+                  <div className="text-center">
+                    {member.image && (
+                      <motion.div
+                        className="w-48 h-48 mx-auto mb-3 rounded-full overflow-hidden"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      >
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                    )}
+                    <h3 className="text-xl font-semibold text-white mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-orange-400 font-medium mb-3">
+                      {member.position}
+                    </p>
+
+                    {/* Email Display and Button */}
+                    {member.emailUser && (
+                      <div className="flex items-center justify-center space-x-3">
+                        <EmailLink
+                          user={member.emailUser}
+                          showText
+                          textClassName="text-slate-300 text-sm truncate max-w-[150px]"
+                          className="inline-flex items-center justify-center bg-slate-700 hover:bg-slate-600
+                                   text-white p-2 rounded-full transition-colors flex-shrink-0 cursor-pointer"
+                          title={`Email ${member.name}`}
+                          ariaLabel={`Email ${member.name}`}
+                        >
+                          <Mail size={18} />
+                        </EmailLink>
+                      </div>
+                    )}
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </main>
+    </PageTransition>
+  );
+};
+
+export default BoardPage;
