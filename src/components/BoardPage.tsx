@@ -9,6 +9,10 @@ import EmailLink from './EmailLink';
 import mpImage from '../../assets/mp.jpg';
 import mgImage from '../../assets/mg.jpg';
 import dinaImage from '../../assets/Dina1.png';
+import amaraImage from '../../assets/amara_alia.jpg';
+import emaDakoImage from '../../assets/ema_dako.jpg';
+import ersianaImage from '../../assets/ersiana_korriku.jpg';
+import rediImage from '../../assets/redi_vranici.jpg';
 
 // Board members data
 const boardMembers = [
@@ -31,7 +35,7 @@ const boardMembers = [
   {
     name: "Amara Alia",
     position: "Vice President in Charge of Marketing",
-    image: null,
+    image: amaraImage,
     bio: "",
     isMain: false,
     emailUser: "marketing"
@@ -47,7 +51,7 @@ const boardMembers = [
   {
     name: "Ema Dako",
     position: "Vice President in Charge of Competitions",
-    image: null,
+    image: emaDakoImage,
     bio: "",
     isMain: false,
     emailUser: "competitions"
@@ -55,7 +59,7 @@ const boardMembers = [
   {
     name: "Ersiana Korriku",
     position: "Vice President in Charge of Professional Development",
-    image: null,
+    image: ersianaImage,
     bio: "",
     isMain: false,
     emailUser: "professionaldevelopment"
@@ -63,7 +67,7 @@ const boardMembers = [
   {
     name: "Redi Vraniçi",
     position: "Vice President in Charge of Seminars & Conferences",
-    image: null,
+    image: rediImage,
     bio: "",
     isMain: false,
     emailUser: "seminarsconferences"
@@ -163,6 +167,7 @@ const BoardPage = () => {
                           src={member.image}
                           alt={member.name}
                           className="w-full h-full object-cover"
+                          style={{ objectPosition: "center 15%" }}
                         />
                       </motion.div>
                     )}
@@ -211,6 +216,7 @@ const BoardPage = () => {
                           src={member.image}
                           alt={member.name}
                           className="w-full h-full object-cover"
+                          style={{ objectPosition: "center 15%" }}
                         />
                       </motion.div>
                     )}
