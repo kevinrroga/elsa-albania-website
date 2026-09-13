@@ -9,12 +9,12 @@ const GalleryImage = ({ src, alt }: GalleryImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className="relative group flex-grow transition-all w-56 rounded-lg overflow-hidden h-[400px] duration-500 hover:w-full">
+    <div className="relative group w-full h-56 md:flex-grow md:w-56 md:h-[400px] rounded-lg overflow-hidden transition-all duration-500 md:hover:w-full">
       <img
         src={src}
         alt={alt}
         className={`
-          h-full w-full object-cover group-hover:object-contain object-center
+          h-full w-full object-cover md:group-hover:object-contain object-center
           ${isLoaded ? 'opacity-100' : 'opacity-0'}
           transition-all duration-300
         `}

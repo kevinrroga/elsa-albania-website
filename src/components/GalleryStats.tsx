@@ -151,7 +151,7 @@ const GalleryStats = () => {
     <section className="bg-slate-900">
       {/* Gallery Section */}
       <div className="max-w-7xl mx-auto px-4 pt-16">
-        <div className="flex items-center justify-center gap-2 h-[400px] w-full max-w-5xl mx-auto mb-16 overflow-x-auto">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-2 w-full max-w-5xl mx-auto mb-16 md:h-[400px]">
           {images.map((image, index) => (
             <GalleryImage key={index} src={image.src} alt={image.alt} />
           ))}
