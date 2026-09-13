@@ -35,14 +35,8 @@
     <link rel="canonical" href="https://elsa-albania.org">
     
     <!-- Security meta tags -->
-    <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self';
-      script-src 'self';
-      style-src 'self' 'unsafe-inline';
-      img-src 'self' data: https://flagcdn.com;
-      font-src 'self' data:;
-      form-action 'self';
-    ">
+    <!-- Note: frame-ancestors is enforced via HTTP header in vercel.json, not this meta tag -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://flagcdn.com; font-src 'self' data:; form-action 'self'; connect-src 'self';">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
     <meta name="referrer" content="no-referrer" />
     
