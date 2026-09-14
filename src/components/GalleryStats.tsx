@@ -23,6 +23,7 @@ import epokaImg from '@assets/epoka university.jpg';
 import komitetihelsinikitImg from '@assets/komitetihelsinkit.jpeg';
 // import ndiImg from '@assets/ndi.jpeg';
 import ministriadrejtesiseImg from '@assets/ministriadrejtesise.jpg';
+import ministriamjedisitImg from '@assets/ministriamjedisit.jpeg';
 import osceImg from '@assets/osce.jpeg';
 import vcsImg from '@assets/vcs.jpg';
 import rycoImg from '@assets/ryco.jpg';
@@ -113,6 +114,11 @@ const GalleryStats = () => {
     {
       logo: ministriadrejtesiseImg,
       name: 'Ministria e Drejtësisë',
+
+    },
+    {
+      logo: ministriamjedisitImg,
+      name: 'Ministria e Mjedisit',
 
     },
     {
