@@ -54,7 +54,7 @@ const Alumni = () => {
     },
     {
       name: 'Kostandino Rroga',
-      position: 'Legal Associate – Logu Law',
+      position: 'Legal Associate – CR Partners in Cooperation with Karanovic and Partners',
       photo: kostandinoImage,
       currentRole: '',
       linkedinUrl: ''
